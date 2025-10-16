@@ -22,10 +22,7 @@ void pop(){
 }
 
 void peek() {
-    if (top == -1)
-        printf("Stack is empty\n");
-    else
-        printf("Top element: %d\n", stack[top]);
+    (top == -1 ) ? printf("stack is empty") : printf("Top element: %d\n", stack[top]);
 }
 void display() {
     for (int i = top; i >= 0; i--)
