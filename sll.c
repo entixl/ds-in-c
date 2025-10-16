@@ -6,9 +6,7 @@ typedef struct node{
     struct node* link;
 }node;
 
-node*head = NULL;
-
-void printData() {
+void printData(node* head) {
     if (head == NULL) {
         printf("Empty linked list\n");
         return;
@@ -21,7 +19,7 @@ void printData() {
     }
 }
 
-void addToEnd(int data){
+void addToEnd(node* head , int data){
     node *ptr , *temp;
     temp = malloc(sizeof(node));
     temp -> data = data;
@@ -32,24 +30,48 @@ void addToEnd(int data){
     }
     ptr -> link = temp; 
 }
-void addToFront(int data){
+
+node* addToFront(node* head , int data){
     node *temp;
     temp = malloc(sizeof(node));
     temp -> data = data;
     temp -> link = head;
-    head = temp;    
-    
+    head = temp;  
+    return head;  
+}
+
+
+void addToPos(node *head , int data , int position){
+    if (position == 1) {
+        addToFront(head , data);
+    }
+    node *ptr , *temp;
+    temp = malloc(sizeof(node));
+    temp->data = data;
+    temp->link = NULL;
+    ptr = head;
+    for (int i = 1; (i < position -1 && ptr != NULL); i++){
+        ptr = ptr->link;
+    }
+    if (ptr == NULL) {
+        printf("Invalid position\n");
+        free(temp);
+        return;
+    }
+    temp->link = ptr->link;
+    ptr->link = temp;
 }
 
 int main() {
+    node*head = NULL;
     head = malloc(sizeof(node));
     head -> data = 10;
     head -> link = NULL;
-    addToFront(5);
-    addToFront(100);
-    addToEnd(20);
-    addToEnd(30);
-    printData();
+    head = addToFront(head , 5);
+    head = addToFront(head , 100);
+    addToEnd(head , 20);
+    addToPos(head , 30 , 1);
+    printData(head);
     free(head);
     return 0;
 }
