@@ -1,4 +1,4 @@
-# ds-in-c
+# data structure in c
 
 1. Implementation of stack using array
 2. Infix to postfix using array
