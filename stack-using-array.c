@@ -28,6 +28,7 @@ void display() {
     for (int i = top; i >= 0; i--)
         printf("%d\n", stack[i]);
 }
+
 int main() {
     int choice, value;
 
