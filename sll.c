@@ -41,7 +41,8 @@ node* addToFront(node* head , int data){
 }
 
 
-void addToPos(node *head , int data , int position){
+
+void addToPos(node **head , int data , int position){
     if (position == 1) {
         addToFront(head , data);
     }
